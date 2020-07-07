@@ -1,0 +1,265 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>简影JanFilm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Movie_store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <link href="{% static 'css/bootstrap.css' %}" rel='stylesheet' type='text/css'/>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <!-- start plugins -->
+    <script type="text/javascript" src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jQuery-2.2.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/xs.js' %}"></script>
+
+<!--{#    <link href='http://fonts.useso.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet'#}-->
+<!--{#          type='text/css'>#}-->
+
+    <!--css-->
+    {% block styles %}
+    {% endblock %}
+
+    <script src="{% static 'js/responsiveslides.min.js' %}"></script>
+    <script>
+        $(function () {
+            $("#slider").responsiveSlides({
+                auto: true,
+                nav: true,
+                speed: 500,
+                namespace: "callbacks",
+                pager: true,
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<style>
+		/*调整容器大小*/
+		#myCarousel {
+            display: block;
+			width: 100%;
+            height: 750px;
+		}
+		/*调整圆圈链接ol位置*/
+		.carousel-indicators {
+			bottom: -5px;
+		}
+		/*调整轮播图位置*/
+		#carousel-example-generic {
+			top: 5px;
+		}
+	</style>
+        <!--js-->
+    {% block scripts %}
+    {% endblock %}
+
+</head>
+
+    <body>
+        <nav class="navbar navbar-default" style="background: brown">
+            <div class="container top" style="background: grey">
+                <div class="container_wrap" style="width: 100%;">
+                    <script type="text/javascript">
+	                     $(document).ready(function() {
+
+	        $(".xs_li_01").xs999(5);
+
+	    });
+                    </script>
+                    {% if request.session.is_login %}
+                        <a style="font-size: 16px; text-decoration: none ;color: white"> &nbsp欢迎用户&nbsp{{ request.session.user_name }}&nbsp进入简影JanFilm系统主页！</a>
+                        <div class="navbar-right">
+                            <a href="./logout/" style="font-size: 14px; text-decoration: none ;color: white">登出&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                        </div>
+                        <div class="navbar-right">
+                            <a href="./user_page/" style="font-size: 14px; text-decoration: none ;color: white">我的主页&nbsp&nbsp&nbsp</a>
+                        </div>
+                    {% else %}
+                        <a style="font-size: 16px; text-decoration: none ;color: white">&nbsp提示：您还没有登陆，只能访问公共内容！</a>
+                        <div class="navbar-right">
+                            <a href="./register/" style="font-size: 14px; text-decoration: none ;color: white">注册&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                        </div>
+                        <div class="navbar-right">
+                            <a href="./login/" style="font-size: 14px; text-decoration: none; color: white">登录&nbsp&nbsp&nbsp</a>
+                        </div>
+                    {% endif %}
+                    <div class="header_top" style="background: lightgoldenrodyellow;" >
+                        <div class="col-sm-3 logo">
+                            <a href="/film/" style="font-size: 26px; text-decoration: none; color: #D8232A">简影JanFilm</a>
+                        </div>
+                        <form class="navbar-form navbar-right" method="get" action="./search/">
+                        {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="输入电影名、导演、演员" name="T_search">
+                            </div>
+                            <button type="submit" class="btn btn-default">搜索</button>
+                        </form>
+
+                        <div class="text-center" >
+                            <h4>
+                                <a href="./recommend/" style="text-decoration: none">不知道看什么？试试我们的推荐吧！</a>
+                            </h4>
+                        </div>
+
+                        <div class="col-sm-6 nav" style="top: 15px">
+                            <ul>
+                                <li><span class="simptip-position-bottom simptip-movable" data-tooltip="动作"><a
+                                        href="./film_type/">动作 </a> </span></li>
+                                <li><span class="simptip-position-bottom simptip-movable" data-tooltip="爱情"><a
+                                        href="./film_type/">爱情 </a></span></li>
+                                <li><span class="simptip-position-bottom simptip-movable" data-tooltip="悬疑"><a
+                                        href="./film_type/">悬疑 </a></span></li>
+                                <li><span class="simptip-position-bottom simptip-movable" data-tooltip="喜剧"><a
+                                        href="./film_type/">喜剧 </a></span></li>
+                                <li><span class="simptip-position-bottom simptip-movable" data-tooltip="动画"><a
+                                        href="./film_type/">动画 </a></span></li>
+                                <li><span class="simptip-position-bottom simptip-movable" data-tooltip="日本"><a
+                                        href="./film_type/">日本 </a></span></li>
+                                <li><span class="simptip-position-bottom simptip-movable" data-tooltip="灾难"><a
+                                        href="./film_type/">灾难 </a></span></li>
+                                <li><span class="simptip-position-bottom simptip-movable" data-tooltip="精选"><a
+                                        href="./films/">精选 </a></span></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="container navbar-left" id="myCarousel">
+                        <div class="page-header">
+                            <h1>今日推荐
+                                <small><a href="/films/" style="color: #A0A0A0;text-decoration: none">动画专区</a></small>
+                            </h1>
+                        </div>
+                            <!-- 轮播图容器 -->
+                            <div id="carousel-example-generic" class="carousel slide">
+                                <!-- 轮播图上的圆圈链接 -->
+                                <ol class="carousel-indicators radiou">
+                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                </ol>
+                                <!-- 轮播图具体内容 -->
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img src="/static/images/miss_w.png" style="height: 540px; width:100%">
+                                        <!-- 图上文字 -->
+                                        <div class="carousel-caption">
+                                            <a href="/film/film_info/?film_get=黑猫警长之翡翠之星" style="font-size: 20px; text-decoration: none ;color: white">
+                                                黑猫警长之翡翠之星
+                                                </br>
+                                                类型： 喜剧 / 动作 / 科幻 / 动画
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <img src="/static/images/miss_w.png" style="height: 540px; width:100%">
+                                        <!-- 图上文字 -->
+                                        <div class="carousel-caption">
+                                            <a href="/film/film_info/?film_get=猪猪侠之终极决战" style="font-size: 20px; text-decoration: none ;color: white">
+                                                猪猪侠之终极决战
+                                                </br>
+                                                类型： 喜剧 / 动画 / 冒险
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <img src="/static/images/miss_w.png" style="height: 540px; width:100%">
+                                        <!-- 图上文字 -->
+                                        <div class="carousel-caption">
+                                            <a href="/film/film_info/?film_get=兔侠之青黎传说" style="font-size: 20px; text-decoration: none ;color: white">
+                                                兔侠之青黎传说
+                                                </br>
+                                                类型： 动作 / 动画 / 冒险
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 轮播图上的向前一图切换链接 -->
+                                <a href="#carousel-example-generic" data-slide="prev" class="left carousel-control">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                </a>
+                                <!-- 轮播图上的向后一图切换链接 -->
+                                <a href="#carousel-example-generic" data-slide="next" class="right carousel-control">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- 引入jquery与bootstrap的js文件 -->
+                        <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+                        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                        <script>
+                            $(".carousel").carousel({
+                                interval:2000 //每隔两秒自动轮播
+                            })
+                        </script>
+                    </div>
+                <div class="container" style="width: 100%;">
+                        <footer id="footer">
+                            <div id="footer-3d">
+                                <div class="gp-container">
+                                    <span class="first-widget-bend"></span>
+                                </div>
+                            </div>
+                            <div id="footer-widgets" class="gp-footer-larger-first-col">
+                                <div class="gp-container">
+                                    <div class="footer-widget footer-1">
+                                        <div class="wpb_wrapper">
+                                            {# <img src="{% static 'images/f_logo.png' %}" alt=""/>#}
+                                            <span style="font-size: 26px">简影JanFilm</span>
+                                        </div>
+                                        <br>
+                                        <p>能给你的都给你了</p>
+                                        <p class="text">持续更新优化中</p>
+                                    </div>
+                                    <div class="footer_box">
+                                        <div class="col_1_of_3 span_1_of_3">
+                                            <h3>友情链接</h3>
+                                            <ul class="first">
+                                                <li><a href="http://bilibili.com/" style=" text-decoration: none ">- 放飞自我</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col_1_of_3 span_1_of_3">
+                                            <h3>关于我们</h3>
+                                            <ul class="first">
+                                                <li><a href="#" style=" text-decoration: none ">- tree new bee</a></li>
+                                                <li><a href="#" style=" text-decoration: none ">- coming soon</a></li>
+                                                {#  <li><a href="#">Specials</a></li>#}
+                                            </ul>
+                                        </div>
+                                        <div class="col_1_of_3 span_1_of_3">
+                                            <h3>联系我们</h3>
+                                            <ul class="first">
+                                                <li><a href="#" style=" text-decoration: none ">- 电话：1234567890</a></li>
+                                                <li><a href="#" style=" text-decoration: none ">- Email：null@qq.com</a></li>
+                                            </ul>
+                                            <div class="copy">
+                                                <p>Copyright &copy; 2017 tree new bee</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                    </footer>
+                </div>
+                <script type="text/javascript">
+	               $(document).ready(function() {
+	               $(".container top").xs999(5);
+	              });
+           </script>
+
+            </div>
+
+        </nav>
+    </body>
+</html>
