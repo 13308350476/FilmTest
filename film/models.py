@@ -1,10 +1,6 @@
 from django.db import models
 
 
-class FilmTag(models.Model):
-    id = models.IntegerField(primary_key=True)
-    ft_title = models.TextField(unique=False, max_length=2560)      # 电影名称
-    ft_tag = models.CharField(max_length=128, blank=True, null=0)   # 标签
 
 
 class FilmData(models.Model):
@@ -72,10 +68,3 @@ class Score(models.Model):
     score_time = models.DateTimeField(auto_now_add=True)
 
 
-class Collection(models.Model):
-    coll_user_name = models.CharField(max_length=128, default="01")
-    coll_film_title = models.CharField(max_length=128, default="坏孩子的秋天")
-    coll_time = models.DateTimeField(auto_now_add=True)
-
-# python manage.py makemigrations
-# 　python manage.py migrate
